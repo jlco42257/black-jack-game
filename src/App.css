@@ -1,0 +1,43 @@
+h1{
+    font-size:large;
+}
+h2{
+    font-size: medium;
+}
+.play-button, .new-game__button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    &:hover{
+        background-color: #333;
+    }
+}
+.player-cards__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.actions__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+    button{
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #000;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        &:hover{
+            background-color: #333;
+        }
+    }
+}

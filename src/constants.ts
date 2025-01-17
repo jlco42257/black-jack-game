@@ -28,6 +28,5 @@ export const GAME_STATUS = {
     LOSE: "lose",
     DEALER_TURN: "dealer turn",
     WIN: "win",
-    NEW_GAME: 'new game',
     TEST: "test"
   };

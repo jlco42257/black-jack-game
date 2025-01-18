@@ -1,50 +1,85 @@
-# React + TypeScript + Vite
+# Blackjack Game 🎴
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and interactive **Blackjack game** built with React and TypeScript. The project demonstrates core concepts of state management, React components, and game logic.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- Play against the dealer in a classic Blackjack game.
+- Dealer automatically follows the rules to draw cards.
+- Interactive UI with animations (e.g., card drawing delay).
+- Tracks player and dealer scores in real-time.
+- Victory confetti when the player wins. 🎉
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 🔧 Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **React**: For building the UI.
+- **TypeScript**: For static typing and improved code maintainability.
+- **CSS**: For styling components.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 📦 Installation
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/jlco42257/black-jack-game.git
+   cd blackjack-game
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 🎮 How to Play
+
+1. Click **"Play"** to start the game.
+2. Your hand is dealt two cards, and the dealer gets one visible card.
+3. Choose between:
+   - **Hit**: Draw another card.
+   - **Stand**: End your turn, and the dealer will play.
+4. The game ends when:
+   - Your score exceeds 21 (**Bust**).
+   - The dealer's turn is over, and scores are compared.
+5. **Winning Condition**:
+   - Your score is higher than the dealer's, but does not exceed 21.
+   - The dealer's score exceeds 21.
+
+---
+
+## 🖍️ Code Highlights
+
+### `App.tsx` – Core Game Logic
+
+- **Game Initialization**: Resets the deck, player hands, and scores.
+- **Score Calculation**: Adjusts for Aces to avoid busting.
+- **Dealer Turn**: Dealer draws cards with a delay until a score threshold is met.
+
+### `Card.tsx` – Reusable Card Component
+
+Displays a playing card image based on rank and suit.
+
+---
+
+## 🙌 Contributions
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+---
+
+## 🔖 License
+
+This project is licensed under the [MIT License](LICENSE).

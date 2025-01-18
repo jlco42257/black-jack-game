@@ -1,11 +1,27 @@
-h1{
-    font-size:large;
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.game__container{
+    display: grid;
+    height: 100vh;
+    padding: 20px;
+}
+.brand{
+    font-size:xx-large;
+    text-align: center;
+    color: #830909;
 }
 h2{
     font-size: medium;
+    text-align: center;
 }
 .play-button, .new-game__button{
     padding: 10px 20px;
+    width: fit-content;
+    align-self: center;
+    justify-self: center;
     border: none;
     border-radius: 5px;
     background-color: #000;
@@ -16,17 +32,19 @@ h2{
         background-color: #333;
     }
 }
+.score{
+    text-align: center;
+    margin: 0;
+}
 .player-cards__container{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
 }
 .actions__container{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
     gap: 20px;
     button{
         padding: 10px 20px;
@@ -40,4 +58,8 @@ h2{
             background-color: #333;
         }
     }
+}
+.game-finish__container{
+    display: flex;
+    flex-direction: column;
 }

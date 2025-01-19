@@ -1,7 +1,8 @@
 {
   "name": "black-jack-game",
   "private": true,
-  "version": "0.0.0",
+  "homepage": "https://jlco42257.github.io/black-jack-game",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",

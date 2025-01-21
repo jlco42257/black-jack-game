@@ -1,65 +1,67 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-.game__container{
-    display: grid;
-    height: 100vh;
-    padding: 20px;
+.game__container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
 }
-.brand{
-    font-size:xx-large;
-    text-align: center;
-    color: #830909;
+.brand {
+  font-size: xx-large;
+  text-align: center;
+  color: #830909;
 }
-h2{
-    font-size: medium;
-    text-align: center;
+h2 {
+  font-size: medium;
+  text-align: center;
 }
-.play-button, .new-game__button{
+.play-button,
+.new-game__button {
+  padding: 10px 20px;
+  width: fit-content;
+  align-self: center;
+  justify-self: center;
+  border: none;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  &:hover {
+    background-color: #333;
+  }
+}
+.score {
+  text-align: center;
+  margin: 0;
+}
+.player-cards__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.actions__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  button {
     padding: 10px 20px;
-    width: fit-content;
-    align-self: center;
-    justify-self: center;
     border: none;
     border-radius: 5px;
     background-color: #000;
     color: #fff;
     cursor: pointer;
-    font-size: 16px;
-    &:hover{
-        background-color: #333;
+    font-size: small;
+    &:hover {
+      background-color: #333;
     }
+  }
 }
-.score{
-    text-align: center;
-    margin: 0;
-}
-.player-cards__container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.actions__container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    button{
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        background-color: #000;
-        color: #fff;
-        cursor: pointer;
-        font-size: 16px;
-        &:hover{
-            background-color: #333;
-        }
-    }
-}
-.game-finish__container{
-    display: flex;
-    flex-direction: column;
+.game-finish__container {
+  display: flex;
+  flex-direction: column;
 }

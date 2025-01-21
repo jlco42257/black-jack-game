@@ -1,0 +1,43 @@
+.play__container{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+.input__label{
+  font-size: small;
+  margin-right: 10px;
+}
+.input__field{
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  background-color: #090929;
+  width: 100px;
+  text-align: center;
+  &:focus{
+    outline: none;
+  }
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.error-message {
+  color: red;
+  font-size: small;
+}
+.start-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: small;
+  &:hover {
+    background-color: #333;
+  }
+}

@@ -23,6 +23,10 @@ interface GameContextProps {
   hit: () => void;
   stand: () => void;
   resetGame: () => void;
+  insuranceBet: number;
+  canTakeInsurance: boolean;
+  takeInsurance: () => void;
+  settleInsurance: (score: number, hand: DeckCard[]) => void;
 }
 
 const GameContext = createContext<GameContextProps | undefined>(undefined);
@@ -36,6 +40,8 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [playerScore, setPlayerScore] = useState(0);
   const [dealerScore, setDealerScore] = useState(0);
   const [deck, setDeck] = useState([...DECK]);
+  const [canTakeInsurance, setCanTakeInsurance] = useState(false);
+  const [insuranceBet, setInsuranceBet] = useState(0);
 
   const calculateScore = (cards: CardData[]): number => {
     const sum = cards.reduce((total, card) => total + card.value!, 0);
@@ -51,16 +57,37 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const initializeGame = () => {
+    setPlayerChips(playerChips - betAmount);
     const initialDeck = [...DECK];
     setDeck(initialDeck);
     const playerHand = [generateCard(), generateCard()];
     const dealerHand = [generateCard()];
+    //const dealerHand = [{ rank: "ACE", suit: "HEARTS", value: 11 }/*, { rank: "KING", suit: "HEARTS", value: 10 }*/];
 
     setPlayerCards(playerHand);
     setDealerCards(dealerHand);
     setPlayerScore(calculateScore(playerHand));
     setDealerScore(calculateScore(dealerHand));
     setGameStatus(GAME_STATUS.PLAYING);
+    if (calculateScore(playerHand) === 21) {
+      setGameStatus(GAME_STATUS.WIN);
+      const winnings = betAmount + betAmount * 1.5;
+      setPlayerChips(playerChips + winnings);
+    }
+    setCanTakeInsurance(dealerHand[0].rank === "ACE");
+  };
+  const takeInsurance = () => {
+    if (playerChips >= betAmount / 2) {
+      setInsuranceBet(betAmount / 2);
+      setPlayerChips((chips) => chips - betAmount / 2);
+    }
+  };
+  const settleInsurance = (score: number, hand: CardData[]) => {
+    if (score === 21 && hand.length === 2) {
+      setPlayerChips((chips) => chips + insuranceBet * 2);
+    }
+    setInsuranceBet(0);
+    setCanTakeInsurance(false);
   };
 
   const hit = () => {
@@ -89,11 +116,16 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setDealerCards(dealerHand);
       setDealerScore(score);
     }
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    if (canTakeInsurance) {
+      settleInsurance(score, dealerHand);
+    }
 
     if (score >= playerScore && score <= 21) {
       setGameStatus(GAME_STATUS.LOSE);
     } else {
       setGameStatus(GAME_STATUS.WIN);
+      setPlayerChips(playerChips + betAmount * 2);
     }
   };
 
@@ -129,6 +161,10 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         hit,
         stand,
         resetGame,
+        insuranceBet,
+        canTakeInsurance,
+        takeInsurance,
+        settleInsurance,
       }}
     >
       {children}

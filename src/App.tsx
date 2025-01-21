@@ -5,10 +5,11 @@ import { useWindowSize } from "react-use";
 import Confetti from "react-confetti";
 import Play from "./components/Play";
 import { useGame } from "./context/GameContext";
+import Insurance from "./components/Insurance";
 
 function App() {
   // State to track the current game status
-  const {gameStatus, playerCards, playerScore, dealerCards, dealerScore, playerChips, hit, stand, resetGame} = useGame();
+  const {gameStatus, playerCards, playerScore, dealerCards, dealerScore, playerChips, hit, stand, resetGame, betAmount} = useGame();
 
   
 
@@ -25,7 +26,8 @@ function App() {
       )}
       {gameStatus != GAME_STATUS.READY && (
         <span>
-          <p>{playerChips}</p>
+          <p>your chips: {playerChips}</p>
+          <p>bet amount: {betAmount}</p>
         </span>
       )}
       <div className="player-cards__container">
@@ -60,6 +62,7 @@ function App() {
           <button onClick={stand}>Stand</button>
         </div>
       )}
+      <Insurance/>
       {gameStatus == GAME_STATUS.LOSE && (
         <div className="game-finish__container">
           <h2>You Lose!</h2>
